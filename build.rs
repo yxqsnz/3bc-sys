@@ -30,8 +30,8 @@ fn main() {
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
     fs::copy("./3bc-lang/src/3bc.h", "./3bc-lang/src/3bc.c").expect("Unable to copy 3bc.h");
-
     cc::Build::new()
         .file("3bc-lang/src/3bc.c")
         .compile("lang-3bc");
+    fs::remove_file("./3bc-lang/src/3bc.c").expect("Unable to remove 3bc.c");
 }
