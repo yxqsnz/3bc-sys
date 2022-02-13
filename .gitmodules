@@ -1,0 +1,4 @@
+[submodule "3bc-lang"]
+	path = 3bc-lang
+	url = https://github.com/RodrigoDornelles/3bc-lang.git
+    
