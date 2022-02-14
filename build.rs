@@ -29,5 +29,9 @@ fn main() {
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
 
-    cc::Build::new().file("wrapper.c").compile("lang-3bc");
+    cc::Build::new()
+        .file("wrapper.c")
+        .warnings(false)
+        .extra_warnings(false)
+        .compile("lang-3bc");
 }
