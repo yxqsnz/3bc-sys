@@ -1,11 +1,10 @@
 extern crate bindgen;
 use std::env;
-use std::fs;
 use std::path::PathBuf;
 fn main() {
-    println!("cargo:rerun-if-changed=wrapper.h");
+    println!("cargo:rerun-if-changed=wrapper.c");
     let bindings = bindgen::Builder::default()
-        .header("wrapper.h")
+        .header("wrapper.c")
         .impl_debug(true)
         .trust_clang_mangling(true)
         .generate_block(true)
@@ -29,9 +28,8 @@ fn main() {
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
-    fs::copy("./3bc-lang/src/3bc.h", "./3bc-lang/src/3bc.c").expect("Unable to copy 3bc.h");
+
     cc::Build::new()
-        .file("3bc-lang/src/3bc.c")
+        .file("wrapper.c")
         .compile("lang-3bc");
-    fs::remove_file("./3bc-lang/src/3bc.c").expect("Unable to remove 3bc.c");
 }
