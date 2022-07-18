@@ -22,7 +22,10 @@ end
 
 echo ":: Some things.."
 echo "${GAP}=> Running tests"
-cargo test -q
+cargo test -q || exit 1
 
 echo "${GAP}=> Running hello_world example"
-cargo run --example hello_world -q
+cargo run --example hello_world -q || exit 1
+
+echo "${GAP}=> Updating crate version"
+sed -i "s/\(version *= *\).*/\1\"${tag}\"/" Cargo.toml
