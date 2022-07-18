@@ -19,13 +19,17 @@ jobs:
         run: |
               git config --local user.email "action@github.com"
               git config --local user.name "GitHub Action"
+      
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
       - name: Update 3bc and crate
         run: ./util/update.sh
       - name: Push changes
         run: git push
-      - name: Publish to crates.io
-        env:
-          CARGO_TOKEN: ${{ secrets.CARGO_TOKEN }}
-        run: |
-            cargo login "${CARGO_TOKEN}"
-            cargo publish
+      - name: Publish changes
+        uses: katyo/publish-crates@v1
+         with:
+          registry-token: ${{ secrets.CARGO_TOKEN }}
+          ignore-unpublished-changes: true
