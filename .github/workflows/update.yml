@@ -17,11 +17,6 @@ jobs:
         run: |
               git config --local user.email "action@github.com"
               git config --local user.name "GitHub Action"
-      - name: Update toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
       - name: Update 3bc and crate
         run: ./util/update.sh
       - name: Push changes
