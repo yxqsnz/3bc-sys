@@ -20,6 +20,9 @@ goto "./3bc-lang/"
   git checkout $tag
 end
 
-git add -A
-git commit -m 'ci(auto): update 3bc-sys'
-git push
+echo ":: Some things.."
+echo "${GAP}=> Running tests"
+cargo test -q
+
+echo "${GAP}=> Running hello_world example"
+cargo run --example hello_world -q
