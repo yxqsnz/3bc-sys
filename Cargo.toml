@@ -4,7 +4,7 @@ version = "0.1.1"
 edition = "2021"
 build = "build.rs"
 description = "Automatic generated bindings for 3BC"
-license = "LGPL3"
+license = "LGPL2.1"
 repository = "https://github.com/yxqsnz/3bc-sys"
 documentation = "https://docs.rs/lang-3bc-sys"
 
