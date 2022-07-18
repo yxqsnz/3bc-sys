@@ -23,6 +23,6 @@ jobs:
         run: git push
       - name: Publish changes
         uses: katyo/publish-crates@v1
-         with:
+        with:
           registry-token: ${{ secrets.CARGO_TOKEN }}
           ignore-unpublished-changes: true
