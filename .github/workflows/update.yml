@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 14 * * 1'
+
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup git
+        run: |
+              git config --local user.email "action@github.com"
+              git config --local user.name "GitHub Action"
+      - name: Update 3bc and crate
+        run: ./util/update.sh
+      - name: Push changes
+        run: git push
