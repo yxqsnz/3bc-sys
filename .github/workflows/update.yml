@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Update and publish crate
 
 # Controls when the workflow will run
 on:
@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  build:
+  update_and_publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,3 +23,9 @@ jobs:
         run: ./util/update.sh
       - name: Push changes
         run: git push
+      - name: Publish to crates.io
+        env:
+          CARGO_TOKEN: ${{ secrets.CARGO_TOKEN }}
+        run: |
+            cargo login "${CARGO_TOKEN}"
+            cargo publish
