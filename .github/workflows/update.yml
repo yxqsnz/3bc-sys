@@ -20,7 +20,7 @@ jobs:
       - name: Update 3bc and crate
         run: ./util/update.sh
       - name: Push changes
-        run: git push
+        run: git push --recurse-submodules=on-demand
       - name: Publish changes
         uses: katyo/publish-crates@v1
         with:
