@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ "rewrite" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "rewrite" ]
+    branches: [ "dev" ]
 
 env:
   CARGO_TERM_COLOR: always
