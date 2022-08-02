@@ -1,0 +1,15 @@
+[package]
+name = "lang-3bc-sys"
+version = "0.1.2"
+edition = "2021"
+build = "build.rs"
+description = "Automatic generated bindings for 3BC"
+license = "LGPL2.1"
+repository = "https://github.com/yxqsnz/3bc-sys"
+documentation = "https://docs.rs/lang-3bc-sys"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+bindgen = "0.60.1"
+cc = "1.0.73"
