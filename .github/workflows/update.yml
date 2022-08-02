@@ -19,6 +19,10 @@ jobs:
               git config --local user.name "GitHub Action"
       - name: Update 3bc and crate
         run: ./util/update.sh
+      - name: Add All
+        run: git add -A
+      - name: Commit
+        run: git commit -m "update"
       - name: Push changes
         run: git push --recurse-submodules=on-demand
       - name: Publish changes
