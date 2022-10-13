@@ -25,8 +25,3 @@ jobs:
         run: git commit -m "update" || echo "SKIPPED."
       - name: Push changes
         run: git push --recurse-submodules=on-demand
-      - name: Publish changes
-        uses: katyo/publish-crates@v1
-        with:
-          registry-token: ${{ secrets.CARGO_TOKEN }}
-          ignore-unpublished-changes: true
